@@ -1,0 +1,127 @@
+{
+	"info": {
+		"_postman_id": "a5a4f6ff-f394-4234-bb24-473eb92c5eaa",
+		"name": "Exp",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "26598447",
+		"_collection_link": "https://lively-star-78374.postman.co/workspace/expense-tracking-api-shared~545a17bf-1219-4d4a-ae1d-30800bc2f005/collection/26598447-a5a4f6ff-f394-4234-bb24-473eb92c5eaa?action=share&source=collection_link&creator=26598447"
+	},
+	"item": [
+		{
+			"name": "get-all-expenses",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/expenses/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"expenses",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update-specific-expenses",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "    {\n        \"expense_name\": \"momo\",\n        \"amount\": \"200\",\n        \"category_name\": \"Food\",\n        \"date\": \"2025-02-19\"\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/expenses/1/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"expenses",
+						"1",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create-expenses",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "    {\n        \"expense_name\": \"t-shirt\",\n        \"amount\": \"1500\",\n        \"category_name\": \"Clothes\",\n        \"date\": \"2025-02-19\"\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/expenses/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"expenses",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "New Request",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/expenses/3/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"expenses",
+						"3",
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

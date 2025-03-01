@@ -1,0 +1,31 @@
+# Virtual Environment
+myenv/
+.env
+
+# Django-related
+db.sqlite3
+/media/
+staticfiles/
+*/migrations/*
+!*/migrations/__init__.py
+
+# Logs & Debugging
+logs/
+*.log
+
+# Dependencies
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# OS & Editor Files
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+
+
