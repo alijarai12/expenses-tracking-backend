@@ -15,8 +15,9 @@ pipeline {
 
         stage('Setup Python Environment') {
             steps {
-                // Create and activate virtual environment, then install dependencies
+                // Use bash to create and activate virtual environment
                 sh '''
+                    #!/bin/bash
                     python3 -m venv $VENV  # Create virtual environment
                     source $VENV/bin/activate  # Activate the virtual environment
                     pip install --upgrade pip  # Upgrade pip
@@ -29,6 +30,7 @@ pipeline {
             steps {
                 // Run Django migrations inside the virtual environment
                 sh '''
+                    #!/bin/bash
                     source $VENV/bin/activate  # Activate virtual environment
                     python manage.py migrate  # Run migrations
                 '''
@@ -39,6 +41,7 @@ pipeline {
             steps {
                 // Run Django development server inside the virtual environment
                 sh '''
+                    #!/bin/bash
                     source $VENV/bin/activate  # Activate virtual environment
                     python manage.py runserver 0.0.0.0:8000  # Run Django server
                 '''
