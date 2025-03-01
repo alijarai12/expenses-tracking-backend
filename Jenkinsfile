@@ -1,35 +1,31 @@
 pipeline {
-    agent none
-    
+    agent none  // Set agent as none, because we are going to use docker as a specific agent in each stage
+
     environment {
         VENV = 'myenv'  // Virtual environment name
     }
 
     stages {
-
-         stage('Checkout Code') {
+        stage('Checkout Code') {
             agent {
                 docker {
                     image 'python:3.11'  // Use Python Docker image
                     args '-u root' // Optional: To run as root user if needed
                 }
             }
-             
-            step {
+            steps {
                 // Checkout your code from the Git repository
                 git 'https://github.com/alijarai12/expenses-tracking-backend.git'
             }
         }
 
         stage('Setup Python Environment') {
-
-             agent {
+            agent {
                 docker {
                     image 'python:3.11'  // Use Python Docker image
                     args '-u root' // Optional: To run as root user if needed
                 }
             }
-            
             steps {
                 // Create and activate virtual environment inside the container, then install dependencies
                 sh '''
@@ -42,6 +38,12 @@ pipeline {
         }
 
         stage('Run Migrations') {
+            agent {
+                docker {
+                    image 'python:3.11'  // Use Python Docker image
+                    args '-u root' // Optional: To run as root user if needed
+                }
+            }
             steps {
                 // Run Django migrations inside the virtual environment
                 sh '''
@@ -52,15 +54,12 @@ pipeline {
         }
 
         stage('Run Application') {
-
-             agent {
+            agent {
                 docker {
                     image 'python:3.11'  // Use Python Docker image
                     args '-u root' // Optional: To run as root user if needed
                 }
             }
-
-            
             steps {
                 // Run Django development server inside the virtual environment
                 sh '''
