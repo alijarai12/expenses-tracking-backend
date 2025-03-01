@@ -1,16 +1,21 @@
 pipeline {
-    agent {
-        docker {
-            image 'python:3.11' // Use Python Docker image
-            args '-u root' // Optional: To run as root user if needed
-        }
-    }
-
+    agent none
+    
     environment {
         VENV = 'myenv'  // Virtual environment name
     }
 
     stages {
+
+         stage('Checkout Code') {
+            agent {
+                docker {
+                    image 'python:3.11'  // Use Python Docker image
+                    args '-u root' // Optional: To run as root user if needed
+                }
+            }
+
+             
         stage('Checkout Code') {
             steps {
                 // Checkout your code from the Git repository
@@ -19,6 +24,14 @@ pipeline {
         }
 
         stage('Setup Python Environment') {
+
+             agent {
+                docker {
+                    image 'python:3.11'  // Use Python Docker image
+                    args '-u root' // Optional: To run as root user if needed
+                }
+            }
+            
             steps {
                 // Create and activate virtual environment inside the container, then install dependencies
                 sh '''
@@ -41,6 +54,15 @@ pipeline {
         }
 
         stage('Run Application') {
+
+             agent {
+                docker {
+                    image 'python:3.11'  // Use Python Docker image
+                    args '-u root' // Optional: To run as root user if needed
+                }
+            }
+
+            
             steps {
                 // Run Django development server inside the virtual environment
                 sh '''
