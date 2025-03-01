@@ -14,10 +14,8 @@ pipeline {
                     args '-u root' // Optional: To run as root user if needed
                 }
             }
-
              
-        stage('Checkout Code') {
-            steps {
+            step {
                 // Checkout your code from the Git repository
                 git 'https://github.com/alijarai12/expenses-tracking-backend.git'
             }
