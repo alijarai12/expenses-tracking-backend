@@ -1,5 +1,5 @@
 pipeline {
-    agent none  // Set agent as none, because we are going to use docker as a specific agent in each stage
+    agent any
 
     environment {
         VENV = 'myenv'  // Virtual environment name
@@ -7,12 +7,6 @@ pipeline {
 
     stages {
         stage('Checkout Code') {
-            agent {
-                docker {
-                    image 'python:3.11'  // Use Python Docker image
-                    args '-u root' // Optional: To run as root user if needed
-                }
-            }
             steps {
                 // Checkout your code from the Git repository
                 git 'https://github.com/alijarai12/expenses-tracking-backend.git'
@@ -20,14 +14,8 @@ pipeline {
         }
 
         stage('Setup Python Environment') {
-            agent {
-                docker {
-                    image 'python:3.11'  // Use Python Docker image
-                    args '-u root' // Optional: To run as root user if needed
-                }
-            }
             steps {
-                // Create and activate virtual environment inside the container, then install dependencies
+                // Create and activate virtual environment, then install dependencies
                 sh '''
                     python3 -m venv $VENV  # Create virtual environment
                     source $VENV/bin/activate  # Activate the virtual environment
@@ -38,12 +26,6 @@ pipeline {
         }
 
         stage('Run Migrations') {
-            agent {
-                docker {
-                    image 'python:3.11'  // Use Python Docker image
-                    args '-u root' // Optional: To run as root user if needed
-                }
-            }
             steps {
                 // Run Django migrations inside the virtual environment
                 sh '''
@@ -54,12 +36,6 @@ pipeline {
         }
 
         stage('Run Application') {
-            agent {
-                docker {
-                    image 'python:3.11'  // Use Python Docker image
-                    args '-u root' // Optional: To run as root user if needed
-                }
-            }
             steps {
                 // Run Django development server inside the virtual environment
                 sh '''
