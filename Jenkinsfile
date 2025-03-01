@@ -37,15 +37,15 @@ pipeline {
             }
         }
 
-        stage('Run Application') {
-            steps {
-                // Run Django development server inside the virtual environment
-                sh '''
-                    #!/bin/bash
-                    . $VENV/bin/activate  # Activate virtual environment using dot (.)
-                    python manage.py runserver 0.0.0.0:8000  # Run Django server
-                '''
-            }
-        }
+        // stage('Run Application') {
+        //     steps {
+        //         // Run Django development server inside the virtual environment
+        //         sh '''
+        //             #!/bin/bash
+        //             . $VENV/bin/activate  # Activate virtual environment using dot (.)
+        //             python manage.py runserver 0.0.0.0:8000  # Run Django server
+        //         '''
+        //     }
+        // }
     }
 }
