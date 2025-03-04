@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        DEPLOY_DIR = '/root/project'
+        DEPLOY_DIR = '/home/deployuser/expenses-tracking-backend'
         VENV_DIR = "${DEPLOY_DIR}/myenv"
         DEPLOY_USER = 'deployuser'
         DEPLOY_SERVER = '20.120.97.51'  // Replace with actual server IP/hostname
