@@ -12,6 +12,8 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 
 from pathlib import Path
 
+import os
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -119,7 +121,11 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
+
+
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
@@ -133,10 +139,15 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 # Keep this for development
-CORS_ALLOWED_ORIGINS = [
+#CORS_ALLOWED_ORIGINS = [
     # "http://127.0.0.1:3000",
-        "http://20.168.234.91:5173",
+    # "http://20.120.97.51:5173",
 
+#]
+
+
+CORS_ALLOWED_ORIGINS = [
+    "http://firstproject.alija-rai.com.np",  # Production domain
 ]
 
 CORS_ALLOW_ALL_ORIGINS = True
@@ -144,5 +155,5 @@ CORS_ALLOW_ALL_ORIGINS = True
 
 # ALLOWED_HOSTS = ['*']
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', '0.0.0.0', '20.168.234.91']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', '0.0.0.0', '20.120.97.51']
 
