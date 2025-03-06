@@ -20,7 +20,7 @@ pipeline {
                     sh """
                         rsync -avz --exclude='myenv' ./ ${DEPLOY_USER}@${DEPLOY_SERVER}:${DEPLOY_DIR}
 
-                        ssh ${DEPLOY_USER}@${DEPLOY_SERVER} << 'EOF'
+                        ssh ${DEPLOY_USER}@${DEPLOY_SERVER} << 'SH_END'
                             cd ${DEPLOY_DIR}
 
                             # Ensure Python and venv are installed
@@ -72,7 +72,7 @@ pipeline {
 
                             # Restart Gunicorn service
                             sudo systemctl restart gunicorn
-                        EOF
+                        SH_END
                     """
                 }
             }
