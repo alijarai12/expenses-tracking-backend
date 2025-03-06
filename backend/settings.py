@@ -134,6 +134,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
+SECURE_SSL_REDIRECT = False  # To allow both HTTP and HTTPS
 
 
 
@@ -147,14 +148,20 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 #]
 
 
+# Production domain
 CORS_ALLOWED_ORIGINS = [
-    "http://firstproject.alija-rai.com.np",  # Production domain
+    "http://firstproject.alija-rai.com.np",  # Allow HTTP origin
+    "https://firstproject.alija-rai.com.np", # Allow HTTPS origin
 ]
-
-CORS_ALLOW_ALL_ORIGINS = True
+# CORS_ALLOW_ALL_ORIGINS = True
 
 
 # ALLOWED_HOSTS = ['*']
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', '0.0.0.0', '20.120.97.51']
+ALLOWED_HOSTS = [
+    'localhost', 
+    '127.0.0.1', 
+    'firstproject.alija-rai.com.np',  # Production domain
+    '20.120.97.51',  # If using IP directly
+]
 
