@@ -150,7 +150,7 @@ SECURE_SSL_REDIRECT = False  # To allow both HTTP and HTTPS
 
 # Production domain
 CORS_ALLOWED_ORIGINS = [
-   # "http://firstproject.alija-rai.com.np",  # Allow HTTP origin
+    "http://firstproject.alija-rai.com.np",  # Allow HTTP origin
     "https://firstproject.alija-rai.com.np", # Allow HTTPS origin
 ]
 # CORS_ALLOW_ALL_ORIGINS = True
