@@ -1,0 +1,44 @@
+services:
+
+  db:
+    image: postgres:13-alpine
+    container_name: myapp_db
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    env_file:
+      - .env
+    restart: always
+    ports:
+      - 5432:5432
+
+  web:
+    build: .
+    container_name: myapp_web
+    env_file:
+      - .env
+    restart: always
+    volumes:
+      - .:/myapp
+    depends_on:
+      - db
+    ports:
+      - 8001:8000
+    
+
+  pgadmin:
+    container_name: myapp_pgadmin
+    image: dpage/pgadmin4
+    restart: always
+    env_file:
+      - .env    
+    ports:
+      - "5052:80"
+    depends_on:
+      - db
+    volumes:
+      - pgadmindata:/var/lib/pgadmin
+
+
+volumes:
+  pgadmindata:
+  postgres_data:
