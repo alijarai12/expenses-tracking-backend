@@ -1,6 +1,5 @@
 # Virtual Environment
 myenv/
-.env
 
 # Django-related
 db.sqlite3
